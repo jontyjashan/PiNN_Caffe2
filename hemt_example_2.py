@@ -18,7 +18,7 @@ preproc_param = {
 	'scale' : scale, 
 	'vg_shift' : vg_shift, 
 }
-numpy.random.seed = 7
+np.random.seed = 7
 permu = np.random.permutation(len(data_arrays[0]))
 data_arrays = [e[permu] for e in data_arrays]
 data_arrays_eval = [e[0:100] for e in data_arrays]
@@ -43,8 +43,8 @@ dc_model.build_nets(
 )
 
 dc_model.train_with_eval(
-	num_epoch=int(1e5),
-	report_interval=1000,
+	num_epoch=int(1e2),
+	report_interval=10,
 	eval_during_training=True
 )
 
@@ -53,13 +53,14 @@ dc_model.train_with_eval(
 dc_model.plot_loss_trend()
 
 # # ----------------- Deployment ---------------------
-_, pred_ids = dc_model.predict_ids(vg, vd)
-plot_iv(
-	vg, vd, ids,
-	vg_comp=vg, 
-	vd_comp=vd, 
-	ids_comp=pred_ids,
-)
+# _, pred_ids = dc_model.predict_ids(vg, vd)
+# plot_iv(
+# 	vg, vd, ids,
+# 	vg_comp=vg, 
+# 	vd_comp=vd, 
+# 	ids_comp=pred_ids,
+# 	save_name = 'saved_plot/'
+# )
 # _, pred_ids = dc_model.predict_ids(vg, vd)
 # plot_iv(
 # 	vd, vg, ids,

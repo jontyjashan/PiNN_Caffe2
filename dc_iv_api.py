@@ -175,10 +175,7 @@ class DCModel:
 		self,
 		num_epoch=1,
 		report_interval=0,
-		eval_during_training=False,
-		alpha =1 ,
-		path = 'path'
-
+		eval_during_training=False
 	):
 		''' Fastest mode: report_interval = 0
 			Medium mode: report_interval > 0, eval_during_training=False
@@ -249,7 +246,7 @@ class DCModel:
 		exporter.save_net(
 			self.net_store['pred_net'], 
 			self.model, 
-			path+str(alpha)+self.model_name+'_init', path+str(alpha)+self.model_name+'_predict'
+			self.model_name+'_init',self.model_name+'_predict'
 		)
 
 

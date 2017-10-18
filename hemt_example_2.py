@@ -6,7 +6,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 
-path = './maxloss7e5/saved_data_12/'
+path = './maxloss1e6/saved_data_1/'
 
 def run_example(k):
 
@@ -31,7 +31,7 @@ def run_example(k):
 	data_arrays_train = [e[100:] for e in data_arrays]
 
 	# ----------------- Train + Eval ---------------------
-	dc_model = DCModel('HEMT_DC_2_L1_Weighted')
+	dc_model = DCModel(path+str(k)+'HEMT_DC_2_L1_Weighted')
 	dc_model.add_data('train', data_arrays_train, preproc_param)
 	dc_model.add_data('eval',data_arrays_eval, preproc_param)
 	# plot_iv(*dc_model.preproc_data_arrays)
@@ -49,11 +49,9 @@ def run_example(k):
 	)
 	start = time.time()
 	dc_model.train_with_eval(
-		num_epoch=int(1e5),
-		report_interval=1000,
-		eval_during_training=True,
-		alpha = k,
-		path = path
+		num_epoch=int(1e3),
+		report_interval=100,
+		eval_during_training=True
 	)
 	end = time.time()
 	print('Elapsed time for alpha ='+str(k)+':' + str(end - start))

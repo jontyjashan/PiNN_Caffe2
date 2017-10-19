@@ -379,7 +379,6 @@ class DCModel:
 		eval_l1_metric = self.reports['eval_l1_metric'][len(self.reports['epoch'])-1]
 		train_scaled_l1_metric = self.reports['train_scaled_l1_metric'][len(self.reports['epoch'])-1]
 		eval_scaled_l1_metric = self.reports['eval_scaled_l1_metric'][len(self.reports['epoch'])-1]
-
 		return epoch,train_loss,eval_loss,train_l1_metric,eval_l1_metric,train_scaled_l1_metric,eval_scaled_l1_metric
 
 		
